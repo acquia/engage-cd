@@ -22,3 +22,4 @@ events:
             # Move out of the docroot so behat doesn't lose it's way. Will run behat with default settings using behat.yml and then terminate when the feature files are done.
             - cd ..
             - ./bin/behat
+            # Other things you should definitely run: phpcs, phpunit, module simpletests
