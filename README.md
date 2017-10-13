@@ -1,4 +1,6 @@
-This is a Composer-based installer for the [Lightning](https://www.drupal.org/project/lightning) Drupal distribution. Welcome to the future!
+This tutorial demonstrates the ability to build a Drupal site with Composer, with only the essential local files (e.g.: not the vendor directory) committed to the source branch. It builds Acquia Lightning, based on the [Lightning Project](https://github.com/acquia/lightning).
+
+The content below comes from the Lightning Project and provides instructions on how to set up this example from scratch.
 
 ## Get Started
 ```
