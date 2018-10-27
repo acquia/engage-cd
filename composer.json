@@ -6,46 +6,41 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "drupal/drupal-extension": "~3.3.0",
-        "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "~1.0.2",
-        "drupal/coder": "8.*",
-        "mikey179/vfsStream": "~1.2",
-        "phpunit/phpunit": "~4.8",
-        "symfony/css-selector": "~2.8",
-        "behat/behat": "^3.0",
-        "se/selenium-server-standalone": "^2.53",
-        "composer/composer": "^1.3",
         "drush/drush": "^9.0",
-        "drupal/console": "1.0.1"
+        "drupal/media_entity_generic": "^1.0",
+        "acquia/lightning_dev": "dev-8.x-1.x"
     },
     "require": {
         "drupal-composer/drupal-scaffold": "^2.0.0",
         "cweagans/composer-patches": "^1.6.0",
-        "acquia/lightning": "~2.2.0",
-        "drupal/core": "~8.4.0"
+        "acquia/lightning": "~3.2.0"
     },
-    "repositories": [
-        {
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-        {
+        "assets": {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        "dev": {
+            "type": "github",
+            "url": "https://github.com/acquia/lightning-dev",
+            "no-api": true
         }
-    ],
-    "scripts": {
-      "post-install-cmd": [
-        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-      ],
-      "post-update-cmd": [
-        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-      ]
     },
     "config": {
-        "bin-dir": "bin/"
+        "process-timeout": 0
+    },
+    "scripts": {
+        "post-install-cmd": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "post-update-cmd": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "nuke": "rm -r -f docroot/modules/contrib docroot/profiles/contrib/lightning vendor composer.lock",
+        "quick-start": [
+            "composer install",
+            "php docroot/core/scripts/drupal quick-start lightning --no-interaction"
+        ]
     },
     "extra": {
         "installer-types": [
